@@ -1,0 +1,346 @@
+% LaTeX Article Template - using defaults
+\documentclass{article}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\usepackage{amsmath}%molde para letras
+\usepackage{amssymb}%Tipos de letra
+
+
+% Set the beginning of a LaTeX document
+\begin{document}
+\decimalpoint
+\title{An\'alisis Num\'erico Maestr\'ia \\ Ejercicios: Unidades 4  (M\'inimos cuadrados) y 5 (Valores y vectores propios)}
+\date{Facultad de Ciencias, UNAM\\ \today}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+\textbf{Unidad 4: M\'inimos cuadrados lineales}
+\begin{enumerate}
+\item Dados los siguientes vectores: 
+$$\alpha=\left[ 
+\begin{array}{c}
+4 \\
+3 
+\end{array}
+\right], \quad \beta=\left[ 
+\begin{array}{c}
+2 \\
+1 \\
+2 
+\end{array}
+\right]$$
+
+Encuentre la matriz de rotaci\'on $G$ y el reflector de Householder $F$ tales que:
+$$G \alpha = \left[ 
+\begin{array}{r}
+5 \\
+0 
+\end{array}
+\right], \quad F \beta = \left[ 
+\begin{array}{r}
+-3 \\
+0 \\
+0 
+\end{array}
+\right]$$
+
+
+\item Dada la matriz
+%$$A= \left[ \begin{tabular}{ccc}
+%1 & 0 & 1 \\
+%1 & 1 & 0 \\
+%0 & 1 & 1 
+%\end{tabular}
+%\right]$$
+$$A= \left[ \begin{tabular}{cc}
+4 & 10 \\
+3 & 0 
+\end{tabular}
+\right]$$
+Calcule su factorizaci\'on $QR$ (a mano) utilizando los m\'etodos de Gram-Schmidt, reflexiones de Householder y rotaciones de Givens.
+
+
+\item El siguiente problema consiste en determinar la curva de crecimiento de una poblaci\'on de bacterias. Los datos a utilizar son, el n\'umero de individuos de una especie particular de bacterias $(y_i)$ en el tiempo $(t_i)$.
+$$t=[0,4,7.5,25,31,48.75,52,58.5,72.7,78,95,96,108,112,133,136.75,143,156.5,166.7,181]$$
+$$y=[8,6,6,7,8,10,13,18,33,38,76,78,164,175,280,300,320,405,385,450]$$
+\begin{enumerate}
+\item Realize un programa que calcule el polinomio de ajuste de grado $n$ (con $n$ dada por el usuario) mediante el m\'etodo de Ecuaciones normales.
+\item ¿Qu\'e pasa cuando el valor de $n$ crece?, ¿es mejor el ajuste?, ¿tiene sentido para el fen\'omeno real?
+\end{enumerate}
+
+\item Repita el proceso utilizando la factorizaci\'on QR mediante el m\'etodo de Householder. ¿C\'omo son las gr\'aficas ahora y los valores de los n\'umeros de condici\'on de la matriz $R$ del sistema? Concluya.
+%\end{enumerate}
+
+\item Considere los siguientes datos, obtenidos de un experimento a intervalos de un segundo, con la primera observaci\'{o}n en el tiempo
+t = 1.0:%
+\[
+\begin{tabular}{lll}
+t: 1 - 9 & t: 10 -18 & t: 19 - 25 \\ 
+5.0291 & 7.5677 & 14.5701 \\ 
+6.5009 & 7.2920 & 17.0440 \\ 
+5.3666 & 10.0357 & 17.0398 \\ 
+4.1272 & 11.0708 & 15.9069 \\ 
+4.2948 & 13.4045 & 15.4850 \\ 
+6.1261 & 12.8415 & 15.5112 \\ 
+12.5140 & 11.9666 & 17.6572 \\ 
+10.0502 & 11.0765 &  \\ 
+9.1614 & 11.7774 & 
+\end{tabular}%
+\]
+
+
+\begin{enumerate}
+\item Utilizando ecuaciones normales, ajuste los datos por una l\'{\i}nea recta $y(t)=\beta_1 + \beta_2 t$ y grafique los residuales $y(t_k)-y_k$. Observe que uno de los datos tiene un residual mucho mayor que el
+resto. Sospechamos que no encaja con el resto de los datos, es decir, es un valor at\'{\i}pico.
+
+\item Deseche el valor at\'{\i}pico, y ajuste nuevametne los datos con una l\'{\i}nea recta. Una vez m\'{a}s, grafique los residuales. \textquestiondown Qu\'{e} patr\'{o}n se observa en la gr\'{a}fica de residuales? \textquestiondown Los residuos parecen azarosos?
+
+\item Para deshacerse de las tendencias de los residuos, ajustar los datos (ya sin el valor at\'{\i}pico)
+con un nuevo modelo%
+\[
+y(t)=\beta_1 + \beta_2 t + \beta_3 sen(t)
+\]%
+Grafica los resuduales. \textquestiondown parecen azarosos ahora?
+\end{enumerate}
+
+%\newpage
+\item Un fen\'omeno que puede presentarse al utilizar el m\'etodo de Gram-Schmidt es la p\'erdida de ortogonalidad. En una A.P.F. de 5 d\'{\i}gitos con redondeo, considere la siguiente matriz
+$$A= \left[ \begin{tabular}{cc}
+0.70001 & 0.70711 \\
+0.70002 & 0.70711
+\end{tabular}
+\right]$$
+Observe que la matriz es cercana a una de rango deficiente.
+\begin{enumerate}
+\item Calcule el primer paso de Gram-Schmidt (es decir $j=1$) para obtener $r_{11}$ y $q_1$.
+\item Calcule el segundo paso y obtenga $r_{12}, r_{22}$ y $q_2$. 
+\item Utilizando los incisos anteriores, d\'e la forma de las matrices $Q$ y $R$ de la factorizaci\'on $QR$ de $A$.
+\item ¿Las columnas de $Q$ son ortogonales?, ¿c\'omo afecta el rango deficiente de $A$ a las  columnas que se obtuvieron de $Q$? Concluya.\\
+
+Hint: Recuerde que:
+$$r_{ij}= \Bigg\{ \begin{array}{cc}
+q_i^t a_j & i \not= j \\
+||a_j - \sum_{k=1}^{j-1}r_{kj}q_k ||_2 & i=j 
+\end{array}$$
+\end{enumerate}
+
+%\newpage
+\item Para matrices que son de rango deficiente es natural observar una p\'erdida de ortogonalidad en la matriz $Q$ de la factorizaci\'on $QR$, por ejemplo para la matriz:
+$$A= \left[ \begin{tabular}{ccc}
+1 & 1 & 1 \\
+1 & 1 & 1 \\
+1 & 1 & 1 
+\end{tabular}
+\right]$$
+%puede haber perdida de ortogonalidad para la matriz $Q$ de su factorizaci\'on $QR$.\\
+
+Un experimento interesante consiste en perturbar ligeramente la matriz de tal forma que 
+$$\tilde{A}= \left[ \begin{tabular}{ccc}
+1             & 1             & 1+ $\epsilon$ \\
+1+ $\epsilon$ & 1             & 1 \\
+1             & 1+ $\epsilon$ & 1 
+\end{tabular}
+\right]$$ 
+con $\epsilon$ peque\~{n}o. Tomando esta matriz perturbada, realice lo siguiente para valores de $\epsilon = 10^{-n}$ con $n=0,1,...,15$.
+\begin{enumerate}
+\item La factorizaci\'on $QR$ de la matriz por el m\'etodo de Gram-Schmidt y verifique la ortogonalidad de la matriz $Q$ resultante calculando la norma $||Q^t Q-I||$.
+%\item El mismo proceso pero utilizando el m\'etodo de Gram-Schmidt mo\-di\-fi\-ca\-do.
+\item El mismo proceso pero mediante el m\'etodo de reflexiones de Householder.
+\item El mismo proceso pero mediante el m\'etodo de rotaciones de Givens.
+\end{enumerate}
+Elabore una tabla donde ilustre y pueda comparar los resultados, ¿qu\'e puede concluir acerca de los m\'etodos de factorizaci\'on $QR$ para matrices cercanas a una de rango deficiente?, ¿ cu\'al preserva mejor la ortogonalidad?
+
+\item Los datos que sigue la trayectoria de un nuevo planeta detectado por la Agencia Espacial Mexicana (AEM) son:
+$$\left[ \begin{tabular}{ccccccccccc}
+x & 1.02 & 0.95 & 0.87 & 0.77 & 0.67 & 0.56 & 0.44 & 0.30 & 0.16 & 0.01 \\
+y & 0.39 & 0.32 & 0.27 & 0.22 & 0.18 & 0.15 & 0.13 & 0.12 & 0.13 & 0.15
+\end{tabular}
+\right]$$
+Con el fin de predecir la ubicaci\'on del planeta en determinado tiempo es necesario encontrar una buena aproximaci\'on a su \'orbita. Por ello la AEM recurre a usted con el fin de encontrar tal \'orbita.
+Tomando la ecuaci\'on:
+$$ay^2+bxy+cx+dy+e=x^2$$
+\begin{enumerate}
+\item Encuentre la \'orbita el\'{\i}ptica que mejor se ajuste utilizando el m\'etodo de ecuaciones normales para encontrar los coeficientes de la cuadr\'atica y grafique la \'orbita calculada junto con las observaciones. Calcule el valor del residual para este ajuste. %y una peque\~{n}a a\-ni\-ma\-ci\'on del recorrido estimado del planeta.
+\item Encuentre ahora la \'orbita el\'{\i}ptica que mejor se ajuste utilizando el m\'etodo de Gram-Schmidt para encontrar los coeficientes de la cuadr\'atica y grafique la \'orbita calculada junto con las observaciones. Calcule tambi\'en el valor del residual para este ajuste.
+\item ¿Compare las graficas y residuales producidas por ambos m\'etodos y concluya?
+\end{enumerate}
+
+\item En un trabajo relacionado con el estudio de la eficiencia de la
+utilizaci\'{o}n de la energ\'{\i}a por las larvas de la polilla modesta
+(Pachysphinx modesta), L. Schroeder [Schrl] utiliz\'{o} los siguientes datos
+para determinar una relaci\'{o}n entre $W$, el peso de las larvas vivas en
+gramos, y $R$, el consumo de ox\'{\i}geno de las larvas en mililitros/hora.
+Por razones biol\'{o}gicas, se supone que entre $W$ y $R$ existe una relaci%
+\'{o}n de la forma $R=bW^{a}$.
+
+\[
+\begin{array}{cccccccc}
+W & R & W & R & W & R & W & R \\ 
+0.017 & 0.154 & 0.211 & 0.366 & 3.040 & 3.590 & 0.233 & 0.537 \\ 
+0.087 & 0.296 & 0.999 & 0.771 & 4.290 & 3.600 & 0.783 & 1.470 \\ 
+0.174 & 0.363 & 3.020 & 2.010 & 5.300 & 3.880 & 1.350 & 2.480 \\ 
+1.110 & 0.531 & 4.280 & 3.280 & 0.020 & 0.180 & 1.690 & 1.440 \\ 
+1.740 & 2.230 & 4.580 & 2.960 & 0.119 & 0.299 & 2.750 & 1.840 \\ 
+4.090 & 3.580 & 4.680 & 5.100 & 0.210 & 0.428 & 4.830 & 4.660 \\ 
+5.450 & 3.520 & 0.020 & 0.181 & 1.320 & 1.150 & 5.530 & 6.940 \\ 
+5.960 & 2.400 & 0.085 & 0.260 & 3.340 & 2.830 &  &  \\ 
+0.025 & 0.23 & 0.171 & 0.334 & 5.480 & 4.150 &  &  \\ 
+0.111 & 0.257 & 1.290 & 0.870 & 0.025 & 0.234 &  & 
+\end{array}%
+\]
+
+\begin{enumerate}
+\item Encuentre el polinomio logar\'{\i}tmico lineal de m\'{\i}nimos
+cuadrados
+\[
+\ln R=\ln b+a\ln W
+\]
+utilizando el m\'etodo de rotaciones de Givens.
+
+\item Calcule el error asociado a la aproximaci\'{o}n en la parte (a):%
+\[
+E=\sum_{i=1}^{37}(R_{i}-bW_{i}^{a})^{2}.
+\]
+
+\item Modifique la ecuaci\'{o}n logar\'{\i}tmica de m\'{\i}nimos cuadrados
+de la parte (a) agregando el t\'{e}rmino cuadr\'{a}tico $c\left( \ln
+W_{i}\right) ^{2}$, y despu\'{e}s determine el polinomio logar\'{\i}tmico de
+m\'{\i}nimos cuadrados, use de nuevo el m\'etodo de rotaciones de Givens. Calcule el error asociado a la aproximaci\'on.
+
+\item Agregue ahora un t\'ermino c\'ubico a la ecuaci\'on logaritmica y determine el polinomio logar\'itmico de m\'inimos cuadrados con rotaciones de Givens. Calcule tambi\'en el error y concluya.
+\end{enumerate}
+
+\newpage
+\item Los siguientes datos representan las tasas de mortalidad (por cien mil) para las personas de edad 20-45, en Inglaterra
+durante el siglo XX :%
+\[
+\begin{array}{cccc}
+20-26 & 27-33 & 34-40 & 41-45 \\ 
+431 & 499 & 746 & 956 \\ 
+409 & 526 & 760 & 1014 \\ 
+429 & 563 & 778 & 1076 \\ 
+422 & 587 & 828 & 1134 \\ 
+530 & 595 & 846 & 1024 \\ 
+505 & 647 & 836 &  \\ 
+459 & 669 & 916 & 
+\end{array}%
+\]
+
+\begin{enumerate}
+\item Usando ecuaciones normales, ajusta una l\'{\i}nea a los datos y graficala junto con los datos. 
+\textquestiondown Crees que los datos est\'{a}n bien representados por una l%
+\'{\i}nea recta?
+
+\item El argumento sugiere que los datos pueden ser representados por
+diferentes l\'{\i}neas en los intervalos de edad [20,28], [28,39] y [39,45].
+Ajuste tres lineas, es decir, para los datos de cada intervalo, y col\'{o}%
+calas en el mismo gr\'{a}fico. Se pueden determinar los
+ajustes de los datos de cada subrango con plena independencia ya que no
+hemos hecho ninguna hip\'{o}tesis sobre las relaciones entre estas l\'{\i}%
+neas.
+
+\item El ajuste en (b) puede no ser continuo en 28 o en 39. Una manera de
+forzar la continuidad es elegir que la funci\'{o}n del modelo tenga esta
+propiedad, para ello es necesario definir funciones b\'asicas que garanticen la continuidad.
+%Para las tres l\'{\i}neas rectas se necesitan seis coeficientes, y la continuidad a los 28 y 39 impone dos condiciones, as\'{\i} que esperamos ocupar un modelo dado por 6 a 2 = 4 funciones b\'{a}sicas.
+Las cuatro funciones que sugerimos que se utilicen est\'{a}n representandas en
+la figura 1 y se nombran $l_{i}(x)$, $i=1,..,4$. Cada una de estas es definida
+y continua en $20\leq x\leq 45$, por lo que cualquier combinaci\'{o}n lineal
+de estas debe serlo. Utilizando estas funciones b\'{a}sicas resuelve el
+problema de m\'{\i}nimos cuadrados. Grafica la soluci\'{o}n junto a los
+ajustes realizados en (a) y (b). \textquestiondown Cu\'{a}l de estos tres
+produce el mejor ajuste?
+\end{enumerate}
+
+\begin{figure}[hbt]
+\begin{center}
+\psfig{figure=base.eps,height=7.5cm,width=10cm}  
+\end{center}
+\caption{Funciones base.}
+\label{base}
+
+\end{figure} 
+
+\newpage
+\item En los laboratorios de f\'{\i}sica de part\'{\i}culas de la UNAM se hacen bombardeos con rayos laser sobre cierto tipo de particulas para determinar su posici\'on en un cierto espacio. Al hacer el bombardeo, el laser despliega un haz de luz cuando hace contacto con la part\'{\i}cula, sin embargo, debido a las unidades tan peque\~{n}as que se manejena, en ocasiones hay errores en la medici\'on.  Un equipo de estudio recolecto los siguientes datos de las posiciones de los haces de luz al hacer el bombardeo sobre una determinada part\'{\i}cula (los datos est\'an dados en micras):
+%
+\[
+\begin{array}{ccc}
+x & y & z \\ 
+0.26 & 1.9 & 3.6 \\
+0.23 & 1.92 & 7 \\
+0.255 & 4.5 & 3.52 \\
+0.27 & 4.42 & 7.1 \\
+2.74 & 1.92 & 3.53 \\
+2.75 & 1.92 & 6.99 \\
+2.77 & 4.4 & 3.56 \\ 
+2.74 & 4.45 & 7.056 \\  
+0.25 & 3.3 & 5.9 \\  
+2.7 & 3.2 & 5.82 \\  
+1.6 & 1.93 & 5.8 \\ 
+1.5 & 4.5 & 5.75  
+\end{array}%
+\]
+
+Con el fin de encontrar las coordenadas de la particula requerida se requiere ajustarla a una forma esf\'erica.
+\begin{enumerate}
+\item Dada la ecuaci\'on de una esfera:
+$$(x-a)^2 +(y-b)^2 + (z-c)^2 = r^2$$
+expanda la expresi\'on, de tal forma que le quede un polinomio cuadr\'atico en $x,y,z$.
+\item Con el fin de que ajuste los datos proporcionados a una esfera, u\-ti\-li\-ce la expansi\'on encontrada para plantear el sistema a ecuaciones a resolver de tal forma que las inc\'ognitas del sistema sean los valores $a$, $b$, $c$ y $d$ ($d$ ser\'a un valor que combine a $r$ y a los otros 3 valores).
+\item Resuelva el problema de m\'{\i}nimos cuadrados utilizando refelxiones de Householder y obtenga los los valores de $a$, $b$, $c$ y $r$. 
+¿C\'omo queda la ecuaci\'on de la esfera calculada?
+\item Grafique los puntos y la esfera del ajuste de m\'{\i}nimos cuadrados.
+\end{enumerate}
+
+\end{enumerate}
+
+\vspace*{1cm}
+\textbf{Unidad 5: Vectores y valores propios}
+\begin{enumerate}
+\item Dada una matriz $A \in \mathbb{R}^{n \times n}$ demuestre que si $X$ es una matriz cuadrada no singular, entonces $A$ y $X^{-1}AX$ tienen el mismo polinomio caracter\'istico.
+
+\item Dada una matriz $A \in \mathbb{R}^{n \times n}$ y sus respectivos valores propios $\lambda_j, j=1,...,n$. Demuestre que:
+$$det(A)=\prod_{j=1}^n \lambda_j$$
+
+\item Realice la implementaci\'on del algoritmo 27.3 de la p\'agina 207 del libro Numerical linear algebra de Trefethen y Bau. Utilice la matriz del ejemplo 27.1 (p\'agina 208) para probar su c\'odigo.
+
+\item Resuelva el ejercicio 5.29 de la p\'agina 254 del libro Scientific computing, an introductory survey de Heath. En este ejercicio se le pide realizar una implementaci\'on del m\'etodo de Newton para el c\'alculo de valores y vectores propios.
+
+
+\item Muestre que los valores propios de una matriz sim\'etrica de $2 \times 2$ son reales. ¿C\'omo quedar\'ia el resultado en general para una matriz sim\'etrica de $ n \times n$?
+
+\item Calcule la descomposici\'on de Schur de la matriz
+$$A=\left[ \begin{tabular}{cc}
+1 & 2 \\
+2 & 3 
+\end{tabular}
+\right]$$
+
+\item Suponga que $A_0 \in \mathbb{R}^{n \times n}$ es sim\'etrica y positiva definida, y considere la siguiente iteraci\'on:\\
+
+\textit{for k=1,2,...\\}
+\textit{\hspace*{0.5cm} $A_{k-1}=G_kG_k^t$ (Factorizaci\'on de Cholesky)\\}
+\textit{\hspace*{0.5cm} $A_{k}=G_k^tG_k$\\}
+\textit{end\\}
+
+muestre que si
+$$A_0=\left[ \begin{tabular}{cc}
+a & b \\
+b & c 
+\end{tabular}
+\right]$$
+con $a \geq c$, tiene valores propios $\lambda_1 \geq \lambda_2 >0$, entonces la matriz $A_k$ converge a $diag(\lambda_1, \lambda_2)$
+
+\item
+
+
+\end{enumerate}
+
+% Set the ending of a LaTeX document
+\end{document}
+
+
+
