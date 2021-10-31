@@ -1,0 +1,189 @@
+\documentclass{article}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem*{theorem*}{Teorema}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem*{prop*}{Proposición}
+\newtheorem{cor}[theorem]{Corolario}
+\newtheorem*{cor*}{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem*{lemma*}{Lema}
+
+\theoremstyle{definition}
+\newtheorem{exmp}[theorem]{Ejemplo}
+\newtheorem{definition}[theorem]{Definición}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\cc}{\mathfrak{c}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\seq}[1]{\left \{ #1_n \right \}_{n \in \N}}
+\newcommand{\seqq}[2]{\left \{ (#1_n,#2_n) \right \}_{n \in \N}}
+
+
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\dom}{dom}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\begin{document}
+
+
+\section*{Unidad 5: vectores y valores propios}
+
+\begin{enumerate}
+	\item Dada una matriz $A \in \R^{n \times n}$, demuestre que si $X$ es una matriz cuadrada no singular entonces $A$ y $X^{-1} A X$ tienen el mismo polinomio característico.
+	
+	\begin{proof}
+		Usaremos que la función  $B \mapsto \det(B)$ es multiplicativa. Sean $p_1,p_2$ los polinomios característicos de $A$ y $X^{-1}AX$, respectivamente. Entonces
+		\begin{align}
+			p_2 (t) & = \det ( X^{-1}AX - tI) \\
+			& = \det( X^{-1} ( AX - t X)) \\
+			& = \det( X^{-1} ( A - tI) X) \\
+			& = \det (X^{-1}) \det (A -tI) \det(X) \\
+			& = \frac{1}{\det (X)} \det (A-tI) \det( X) \\
+			& = \det (A-tI) \\
+			&  = p_1 (t).
+		\end{align}
+		
+	Por lo tanto, $A$ y $X^{-1}AX$ tienen el mismo polinomio característico.
+	\end{proof}
+	
+\item  Dada una matriz $A \in \R^{n \times n}$ y sus respectivos valores propios $\lambda_1, \dots ,\lambda_n$, demuestre que
+	\begin{align}
+		\det (A ) = \prod _{j=1}^n \lambda_j.
+	\end{align}
+	
+	\begin{proof}
+		Recordemos que $A$ es diagonalizable sobre el campo de los complejos, por lo que existe una matriz invertible $N$ con coeficientes complejos tal que
+			\begin{align}
+				N^{-1}AN = D,
+			\end{align}
+		donde
+			\begin{align}
+				D  = diag(\lambda_1, \dots, \lambda_n).
+			\end{align}
+			
+		Usaremos que la función $B \mapsto \det (B)$ es multiplicativa:
+			\begin{align}
+				\det (D) & = \det ( N^{-1}) \det (A) \det (N) \\
+				& = \frac{1}{\det(N)} \det (A) \det (N) \\
+				& = \det (A).
+			\end{align}
+		Por lo tanto, 
+			\begin{align}
+				\det (A) & =   \det(D) \\
+				& = \prod_{j=1}^n \lambda_j,
+			\end{align}
+		donde la última igualdad se da porque el determinante de una matriz diagonal es igual al producto de las entradas de su diagonal.
+	\end{proof}
+	
+\item 
+\item 
+
+\item Muestre que los valores propios de una matriz simétrica con coeficientes reales de $ 2 \times 2$ son reales. ¿Cómo quedaría el resultado en general para una matriz simétrica con coeficientes en los reales de $n \times n$?
+
+\begin{proof}
+	scá
+	
+\end{proof}
+
+\item Calcule la descomposición de Schur de la matrix
+	\begin{align}
+		A = \begin{pmatrix}
+			1 & 2 \\
+			2 & 3
+		\end{pmatrix}
+	\end{align}
+
+\textbf{Solución:} Primero calculamos el polinomio característico de $A$:
+	\begin{align}
+		p(t) & = t^2-tr A t+\det A \\
+		&  = t^2 -4t-1 \\
+		& = \left (t- \left(2+\sqrt{5} \right) \right) \left( t-\left(2-\sqrt{5}\right) \right)
+	\end{align}
+	
+	Para encontrar un valor propio asociado a $\lambda_1 = 2+\sqrt{5}$, resolvemos el sistema
+		\begin{align}
+			0 & = (A-\lambda_1 I) v \\
+			& = \begin{pmatrix}
+				-1 - \sqrt{5} & 2 \\
+				2 & 1-\sqrt{5}
+			\end{pmatrix} \begin{pmatrix}
+			x \\ y
+			\end{pmatrix} \\
+			& = \begin{pmatrix}
+				-(1+\sqrt{5}) x +2y \\
+				2x +(1-\sqrt{5})y
+			\end{pmatrix}.
+		\end{align}
+	Las dos ecuaciones de este sistema son equivalentes, por lo que nos podemos deshacer de la segunda y obtenemos
+		\begin{align}
+			y = \frac{1+\sqrt{5}}{2} x.
+		\end{align}
+	Haciendo $x=2$, obtenemos el vector propio
+		\begin{align}
+			v = \begin{pmatrix}
+				2 \\ 1+\sqrt{5}
+			\end{pmatrix}
+		\end{align}
+	Para obtener un vector propio asociado a $\lambda_2 = 2-\sqrt{5}$ basta conjugar $v$ respecto a $\sqrt{5}$, obteniendo 
+		\begin{align}
+			w = \begin{pmatrix}
+			2 \\
+			1-\sqrt{5}
+			\end{pmatrix}
+		\end{align}
+		
+	Notemos que (afortunadamente), $v$ y $w$ ya son ortogonales, por lo que para obtener una base ortonormal para $\R^2$ compuesta por vectores propios de $A$ basta normalizar a $v$ y $w$. Definimos
+		\begin{align}
+			u_1 & = \frac{u}{\norm{u}} = \frac{1}{\sqrt{10+2\sqrt{5}}} \begin{pmatrix}
+			2 \\ 1+\sqrt{5}
+			\end{pmatrix} \\
+			 u_2 & = \frac{w}{\norm{w}} = \frac{1}{\sqrt{ 10-2\sqrt{5} } } \begin{pmatrix} 2 \\ 1- {\sqrt{5}}
+			 \end{pmatrix} 
+		\end{align}
+	De esta forma, si consideramos
+		\begin{align}
+			Q = \begin{pmatrix}
+				u_1 & u_2
+			\end{pmatrix}
+			= \begin{pmatrix}
+			\frac{2}{\sqrt{10+2\sqrt{5}}} &  \frac{2}{\sqrt{ 10-2\sqrt{5} }} \\
+			\frac{1+\sqrt{5}}{\sqrt{10+2\sqrt{5}}} & \frac{1- \sqrt{5}}{\sqrt{ 10-2\sqrt{5} }}
+			\end{pmatrix}
+		\end{align}
+	y 
+		\begin{align}
+			D = \begin{pmatrix}
+					2+ \sqrt{5} & 0 \\
+					0 & 2- \sqrt{5}
+			\end{pmatrix}
+		\end{align}
+	entonces
+		\begin{align}
+			A = Q D Q^T,
+		\end{align}
+	esta es la factorización de Schur de $A$.
+\item
+	
+
+	
+\end{enumerate} 
+
+\end{document}
